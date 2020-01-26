@@ -18,6 +18,7 @@
 //Coms
 #include "coms/PidServer.h"
 #include "coms/DummyServer.h"
+#include "coms/EncoderServer.h"
 // DEFINES
 #define REV2
 //#define REV1
