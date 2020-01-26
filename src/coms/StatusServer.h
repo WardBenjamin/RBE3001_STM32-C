@@ -1,15 +1,26 @@
 #pragma once
 
+#include <PID_Bowler.h>
 #include <PacketEvent.h>
-#include <cmath>        // std::abs
+#include "../drivers/MyPid.h"
+#include <cmath>              // needed for std::abs
+
 
 #define STATUS_SERVER_ID 03
 
 class StatusServer: public PacketEventAbstract {
 
+private:
+	PIDimp ** myPidObjects;    // array of PidServers - one for each joint
+	int myPumberOfPidChannels;
+
 public:
     // Packet ID needs to be set
-    StatusServer () : PacketEventAbstract(STATUS_SERVER_ID) {}
+    StatusServer (PIDimp ** pidObjects, int numberOfPidChannels) : PacketEventAbstract(STATUS_SERVER_ID)
+	{
+        myPidObjects = pidObjects;
+        myPumberOfPidChannels = numberOfPidChannels;
+	}
 
     // User function to be called when a packet comes in
     // Buffer contains data from the packet coming in at the start of the function

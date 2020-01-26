@@ -15,10 +15,19 @@ void StatusServer::event(float* packet)
     for (int i = 0; i < 60; i++)
         buff[i] = 0;
 
-    packet[0] = 0; // Encoder, Joint 0
+
+    for(int i = 0; i < myPumberOfPidChannels; i++)
+    {
+       float position = myPidObjects[i]->GetPIDPosition();
+       float velocity = myPidObjects[i]->getVelocity();
+       packet[i] = position;
+       packet[i + 3] = velocity;
+    }
+
+    /*packet[0] = 10; // Encoder, Joint 0
     packet[1] = 1; // Encoder, Joint 1
     packet[2] = 2; // Encoder, Joint 2
-    packet[3] = 3; // Velocity, Joint 0
+    packet[3] = 34; // Velocity, Joint 0
     packet[4] = 4; // Velocity, Joint 1
-    packet[5] = 5; // Velocity, Joint 2
+    packet[5] = 5; // Velocity, Joint 2*/
 }
