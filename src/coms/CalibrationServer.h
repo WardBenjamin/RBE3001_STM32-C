@@ -11,21 +11,30 @@
 #ifndef SRC_COMS_CALIBRATIONSERVER_H_
 #define SRC_COMS_CALIBRATIONSERVER_H_
 
+#include <PID_Bowler.h>
 #include <PacketEvent.h>
+#include "../drivers/MyPid.h"
+#include <cmath>              // needed for std::abs
+
 
 #define CALIBRATION_SERVER_ID 04 //Server ID Number
 
-float encoder1Value;
-float encoder2Value;
-float encoder3Value;
+//float encoder1Value;
+//float encoder2Value;
+//float encoder3Value;
 
 
-class CalibrationServer
+class CalibrationServer: public PacketEventAbstract
 {
+private:
+	float * homeArray;
 
 public:
 
-	CalibrationServer (float * home) : PacketEventAbstract(CALIBRATION_SERVER_ID){};
+	CalibrationServer(float * home) : PacketEventAbstract(CALIBRATION_SERVER_ID)
+	{
+		homeArray = home;
+	}
 
 	void event(float * buffer);
 

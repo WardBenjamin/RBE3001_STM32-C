@@ -30,9 +30,12 @@ Ticker pidTimer;           // implements a timer
 static PIDimp * pid[DOFs]; // pointer to PID controllers (one for each link)
 HIDSimplePacket coms;      // HID packet handlers
 
+
 // The following array contains the "home" positions (in encoder ticks) for each
 // of the robot's joints 
-float homePosition[3] = {-0.25, 5.25, 1.00};
+float homePosition[3] = {2980, 2984.5, 1970.25};
+
+float homeArray[3];
 
 
 
@@ -137,7 +140,7 @@ int main() {
 
 	coms.attach(new PidServer(pid, DOFs));
 	coms.attach(new StatusServer(pid, DOFs));
-	coms.attach(new CalibrationServer());
+	coms.attach(new CalibrationServer(homeArray));
 	//coms.attach(new PidConfigServer(pid, DOFs));
 
 #ifdef DEBUG_
