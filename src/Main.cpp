@@ -34,6 +34,8 @@ HIDSimplePacket coms;      // HID packet handlers
 // of the robot's joints 
 float homePosition[3] = {-0.25, 5.25, 1.00};
 
+
+
 void runPid() {
 	// update all positions fast and together
 	for (int i = 0; i < DOFs; i++)
@@ -135,6 +137,7 @@ int main() {
 
 	coms.attach(new PidServer(pid, DOFs));
 	coms.attach(new StatusServer(pid, DOFs));
+	coms.attach(new CalibrationServer());
 	//coms.attach(new PidConfigServer(pid, DOFs));
 
 #ifdef DEBUG_

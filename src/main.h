@@ -19,6 +19,7 @@
 #include "coms/PidServer.h"
 #include "coms/DummyServer.h"
 #include "coms/StatusServer.h"
+#include "coms/CalibrationServer.h"
 // DEFINES
 #define REV2
 //#define REV1

@@ -24,6 +24,8 @@ void StatusServer::event(float* packet)
        packet[i + 3] = velocity;
     }
 
+
+
     /*packet[0] = 10; // Encoder, Joint 0
     packet[1] = 1; // Encoder, Joint 1
     packet[2] = 2; // Encoder, Joint 2
