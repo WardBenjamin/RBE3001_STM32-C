@@ -22,7 +22,7 @@
 
 #define  DEBUG_      // if defined, this macro enables the printing of debug
 // statements to the serial port - which can be read with PUTTY
-
+//float homeArray[3];
 /*
  * ======= PART 1: Global Variables and definition of ancillary functions ======
  */
@@ -34,8 +34,6 @@ HIDSimplePacket coms;      // HID packet handlers
 // The following array contains the "home" positions (in encoder ticks) for each
 // of the robot's joints 
 float homePosition[3] = {2980, 2984.5, 1970.25};
-
-float homeArray[3];
 
 
 
@@ -140,8 +138,9 @@ int main() {
 
 	coms.attach(new PidServer(pid, DOFs));
 	coms.attach(new StatusServer(pid, DOFs));
-	coms.attach(new CalibrationServer(homeArray));
+	coms.attach(new CalibrationServer(homePosition));
 	//coms.attach(new PidConfigServer(pid, DOFs));
+
 
 #ifdef DEBUG_
 	printf("\r\n\r\n Initialization complete. \r\n\r\n");

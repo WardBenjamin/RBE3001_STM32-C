@@ -19,22 +19,29 @@
 
 #define CALIBRATION_SERVER_ID 04 //Server ID Number
 
+
+
 //float encoder1Value;
 //float encoder2Value;
 //float encoder3Value;
 
-
 class CalibrationServer: public PacketEventAbstract
 {
 private:
-	float * homeArray;
+
+
 
 public:
+
+	float * homeArray;
 
 	CalibrationServer(float * home) : PacketEventAbstract(CALIBRATION_SERVER_ID)
 	{
 		homeArray = home;
 	}
+
+
+
 
 	void event(float * buffer);
 
