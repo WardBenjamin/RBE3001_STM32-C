@@ -21,10 +21,16 @@
 #include "Servo.h"
 #include "RunEvery.h"
 
-// Initial values for the PID gains
-#define kp 0.005
-#define ki 0
-#define kd 0
+// Initial values for the PID gains #1
+//#define kp 0.005
+//#define ki 0
+//#define kd 0
+//#define vkp 1
+
+// values for the PID gains #2
+#define kp 0.0005
+#define ki 0.0001
+#define kd 0.
 #define vkp 1
 
 #define vkd 0

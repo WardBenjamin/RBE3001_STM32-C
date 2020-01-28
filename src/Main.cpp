@@ -20,9 +20,9 @@
 #define  DOFs  3     // this macro defines the number of joints of the robotic arm
 //#define  DUMMYMODE   // this macro selects the running mode - see instructions above
 
-#define  DEBUG_      // if defined, this macro enables the printing of debug
+//#define  DEBUG_      // if defined, this macro enables the printing of debug
 // statements to the serial port - which can be read with PUTTY
-//float homeArray[3];
+
 /*
  * ======= PART 1: Global Variables and definition of ancillary functions ======
  */
@@ -138,8 +138,8 @@ int main() {
 
 	coms.attach(new PidServer(pid, DOFs));
 	coms.attach(new StatusServer(pid, DOFs));
-	coms.attach(new CalibrationServer(homePosition));
-	//coms.attach(new PidConfigServer(pid, DOFs));
+	coms.attach(new CalibrationServer(pid, DOFs, homePosition));
+	coms.attach(new PidConfigServer(pid, DOFs));
 
 
 #ifdef DEBUG_
@@ -166,6 +166,10 @@ int main() {
 	while (1) {
 
 		coms.server();
+
+//		printf("Current: %f, %f, %f\r\n", homePosition[0], homePosition[1], homePosition[2]);
+		printf("Encoders: %f , %f , %f\r\n", pid[0]->GetPIDPosition(),
+				pid[1]->GetPIDPosition(), pid[2]->GetPIDPosition());
 
 		// The following code prints out debug statements.
 #ifdef DEBUG_
