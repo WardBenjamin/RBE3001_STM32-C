@@ -28,20 +28,13 @@
 class CalibrationServer: public PacketEventAbstract
 {
 private:
-
-
+	float * homePositions;
 
 public:
-
-	float * homeArray;
-
-	CalibrationServer(float * home) : PacketEventAbstract(CALIBRATION_SERVER_ID)
+	CalibrationServer(float * homePositions) : PacketEventAbstract(CALIBRATION_SERVER_ID)
 	{
-		homeArray = home;
+		this->homePositions = homePositions;
 	}
-
-
-
 
 	void event(float * buffer);
 

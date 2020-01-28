@@ -13,7 +13,10 @@
  */  
 void PidConfigServer::event(float * packet)
 {
-  
+	// NOTE: Wakeup gate necessary since this status modifies system behavior
+	if(!packet[14])
+		return;
+
   for(int i = 0; i < myPumberOfPidChannels; i++)
     {
       // read values from the packet packet

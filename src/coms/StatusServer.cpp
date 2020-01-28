@@ -9,6 +9,8 @@
  */  
 void StatusServer::event(float* packet)
 {
+	// NOTE: Wakeup gate not necessary since this status doesn't modify system behavior
+
     uint8_t* buff = (uint8_t*) packet;
 
     // Re-initialize the packet to all zeros

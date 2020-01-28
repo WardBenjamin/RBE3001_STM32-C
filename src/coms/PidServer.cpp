@@ -15,6 +15,12 @@
  */
 void PidServer::event(float * packet){
 
+
+	// NOTE: Wakeup gate necessary since this status modifies system behavior
+	if(!packet[14])
+		return;
+
+
   /*
    * ======= PART 1: Decode setpoints and send commands to the PID controller ==
    */
