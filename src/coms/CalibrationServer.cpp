@@ -22,7 +22,7 @@ void CalibrationServer::event(float* packet)
 
 	printf("Old: %f, %f, %f\r\n", homePositions[0], homePositions[1], homePositions[2]);
 
-	// Hard coded origin - current encoder value gives offset
+	// Hard coded origin + current encoder value gives offset
 	homePositions[0] = homePositions[0] + encoder1Value;
 	homePositions[1] = homePositions[1] + encoder2Value;
 	homePositions[2] = homePositions[2] + encoder3Value;
