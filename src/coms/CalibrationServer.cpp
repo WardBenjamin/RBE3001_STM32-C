@@ -20,10 +20,22 @@ void CalibrationServer::event(float* packet)
 	float encoder2Value = packet[1];
 	float encoder3Value = packet[2];
 
-	// Hard coded origin - current encoder value gives offset
-	homePositions[0] = homePositions[0] - encoder1Value;
-	homePositions[1] = homePositions[1] - encoder2Value;
-	homePositions[2] = homePositions[2] - encoder3Value;
+	printf("Old: %f, %f, %f\r\n", homePositions[0], homePositions[1], homePositions[2]);
+
+	// Hard coded origin + current encoder value gives offset
+	homePositions[0] = homePositions[0] + encoder1Value;
+	homePositions[1] = homePositions[1] + encoder2Value;
+	homePositions[2] = homePositions[2] + encoder3Value;
+//
+//	printf("Joint 1 new home: %f\r\n", myPidObjects[0]->GetPIDPosition() - j0);
+	printf("New: %f, %f, %f\r\n", homePositions[0], homePositions[1], homePositions[2]);
+
+	this->myPidObjects[0]->pidReset(0);
+	this->myPidObjects[1]->pidReset(0);
+	this->myPidObjects[2]->pidReset(0);
+
+
+
 
 	// Typecast the packet
     uint8_t* buff = (uint8_t*) packet;

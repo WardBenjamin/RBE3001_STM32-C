@@ -15,6 +15,7 @@
 #include <PacketEvent.h>
 #include "../drivers/MyPid.h"
 #include <cmath>              // needed for std::abs
+#include <stdio.h>
 
 
 #define CALIBRATION_SERVER_ID 04 //Server ID Number
@@ -28,11 +29,15 @@
 class CalibrationServer: public PacketEventAbstract
 {
 private:
+	PIDimp ** myPidObjects;
+	int myPumberOfPidChannels;
 	float * homePositions;
 
 public:
-	CalibrationServer(float * homePositions) : PacketEventAbstract(CALIBRATION_SERVER_ID)
+	CalibrationServer(PIDimp ** pidObjects, int numberOfPidChannels, float * homePositions) : PacketEventAbstract(CALIBRATION_SERVER_ID)
 	{
+	    myPidObjects=pidObjects;
+	    myPumberOfPidChannels=numberOfPidChannels;
 		this->homePositions = homePositions;
 	}
 
