@@ -165,10 +165,12 @@ int main() {
 	while (1) {
 
 		coms.server();
+		pid[1]->gravityCompTerm = .05f;
+		pid[2]->gravityCompTerm = .025f;
 
 //		printf("Current: %f, %f, %f\r\n", homePosition[0], homePosition[1], homePosition[2]);
-		printf("Encoders: %f , %f , %f\r\n", pid[0]->GetPIDPosition(),
-				pid[1]->GetPIDPosition(), pid[2]->GetPIDPosition());
+//		printf("Encoders: %f , %f , %f\r\n", pid[0]->GetPIDPosition(),
+//				pid[1]->GetPIDPosition(), pid[2]->GetPIDPosition());
 
 		// The following code prints out debug statements.
 #ifdef DEBUG_
