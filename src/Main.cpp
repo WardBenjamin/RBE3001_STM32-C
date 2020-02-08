@@ -165,8 +165,8 @@ int main() {
 	while (1) {
 
 		coms.server();
-		pid[1]->gravityCompTerm = .05f;
-		pid[2]->gravityCompTerm = .025f;
+		pid[1]->gravityCompTerm = .005f;
+		pid[2]->gravityCompTerm = .005f;
 
 //		printf("Current: %f, %f, %f\r\n", homePosition[0], homePosition[1], homePosition[2]);
 //		printf("Encoders: %f , %f , %f\r\n", pid[0]->GetPIDPosition(),
