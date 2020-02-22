@@ -14,13 +14,16 @@ void GripperServer::event(float* packet)
 	//if(!packet[14])
 	//	return;
 
-	float gripperVal = packet[1];
+	float gripperVal = 0.85;
 
-	//Reads back encoder values from last status command
+	if (packet[0] == 0) {
+		gripperVal = 0.0;
+	}
 
-	//this->myGripperServo->write(gripperVal);
+	this->myGripperServo->write(gripperVal);
 
-	this->myGripperServo->position(12);
+
+	// this->myGripperServo->position(12);
 
 
 
@@ -33,10 +36,6 @@ void GripperServer::event(float* packet)
     for (int i = 0; i < 60; i++)
         buff[i] = 0;
 
-    packet[1] = 10;
-    packet[2] = 15;
-    packet[3] = gripperVal;
-    packet[4] = gripperVal;
-
+    packet[0] = this->myGripperServo->read();
 
 }

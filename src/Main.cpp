@@ -163,7 +163,7 @@ int main() {
 	 * IMPORTANT: the code below includes print statements that, while being useful for
 	 *            debugging/testing, will slow down the main loop execution rate.
 	 *            You can disable these statements at compile time, by commenting out
-	 *            the DEBUG macro at the beginning of this source file.
+	 *            the DEBUG macro at the begin`ning of this source file.
 	 */
 
 	while (1) {
