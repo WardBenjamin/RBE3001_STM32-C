@@ -20,6 +20,11 @@ void GripperServer::event(float* packet)
 		gripperVal = 0.0;
 	}
 
+	if (packet[1] > .01)
+	{
+		gripperVal = packet[1];
+	}
+
 	this->myGripperServo->write(gripperVal);
 
 
